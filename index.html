@@ -170,7 +170,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -180,7 +180,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -246,7 +246,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-23T17:55:06+08:00" content="2016-05-23">
               2016-05-23
             </time>
@@ -277,14 +277,98 @@
       
         
           
-            <p>#Hello World</p>
-<p>sdfsdfsdfsfsdfsd</p>
-<p>sdfsdfsdfsfsdfsd</p>
-<p>sdfsdfsdfsfsdfsd<br>sdfsdfsdfsfsdfsd</p>
-<p>sdfsdfsdfsfsdfsdsdfsdfsdfsfsdfsd<br>sdfsdfsdfsfsdfsd<br>vsdfsdfsdfsfsdfsd</p>
-<p>sdfsdfsdfsfsdfsd<br>sdfsdfsdfsfsdfsd</p>
-<p>sdfsdfsdfsfsdfsd</p>
-<p>sdfsdfsdfsfsdfsd</p>
+            <p>#JRDB</p>
+<p><strong>一个对FMDB进行类Hibernate封装的ios库，支持Objective-c 和 Swift。</strong></p>
+<p>GitHub: <a href="https://github.com/scubers" target="_blank" rel="external">sucbers</a></p>
+<p>Feedback: <a href="mailto:jrwong@qq.com" target="_blank" rel="external">jr-wong@qq.com</a></p>
+<p>–</p>
+<p>#Description</p>
+<ul>
+<li>使用分类的模式，模仿Hibernate，对FMDB进行简易封装</li>
+<li>支持pod 安装 『pod ‘JRDB’』，Podfile需要添加  use_framework! </li>
+<li>使用协议，不用继承基类，对任意NSObject可以进行入库操作</li>
+<li>支持swift 和 Objective-C</li>
+<li>支持数据类型：基本数据类型（int，double，等），String，NSData，NSNumber，NSDate<ul>
+<li>注：swift的基本数据类型，不支持<strong>Option</strong>类型，既不支持Int？Int！等，对象类型支持<strong>Option</strong>类型</li>
+</ul>
+</li>
+</ul>
+<p>–</p>
+<p>#Installation 【安装】<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use_frameworks!</span><br><span class="line">pod <span class="string">'JRDB'</span></span><br></pre></td></tr></table></figure></p>
+<p>–</p>
+<p>#Usage</p>
+<p>###Save 【保存】</p>
+<ul>
+<li>OC</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Person *p = [[Person alloc] init];</span><br><span class="line">p.a_int = <span class="number">1</span>;</span><br><span class="line">p.b_unsigned_int = <span class="number">2</span>;</span><br><span class="line">p.c_long = <span class="number">3</span>;</span><br><span class="line">p.d_long_long = <span class="number">4</span>;</span><br><span class="line">p.e_unsigned_long = <span class="number">5</span>;</span><br><span class="line">p.f_unsigned_long_long = <span class="number">6</span>;</span><br><span class="line">p.g_float = <span class="number">7.0</span>;</span><br><span class="line">p.h_double = <span class="number">8.0</span>;</span><br><span class="line">p.i_string = <span class="string">@"9"</span>;</span><br><span class="line">p.j_number = @<span class="number">10</span>;</span><br><span class="line">p.k_data = [<span class="built_in">NSData</span> data];</span><br><span class="line">p.l_date = [<span class="built_in">NSDate</span> date];</span><br><span class="line">[p jr_save];</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Swift</strong><ul>
+<li>Swift中需要入库的类需要继承<strong>NSObject</strong>（使用到runtime）</li>
+<li>The Object that you want to persistent should inherit from <strong>NSObject</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p = <span class="type">Person</span>()</span><br><span class="line">p.name = <span class="string">"name"</span></span><br><span class="line">p.age = <span class="number">10</span></span><br><span class="line">p.birthday = <span class="type">NSDate</span>()</span><br><span class="line">p.jr_save()</span><br></pre></td></tr></table></figure>
+<p>–</p>
+<p>###Update 【更新】</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person *p = [Person jr_findAll].firstObject;</span><br><span class="line">p.name = <span class="string">@"abc"</span>;</span><br><span class="line">[p jr_update columns:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
+<pre><code>column: 需要更新的字段名，传入空为全量更新
+</code></pre><p>–</p>
+<p>###Delete 【删除】</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person *p = [Person jr_findAll].firstObject;</span><br><span class="line">[p jr_delete];</span><br></pre></td></tr></table></figure>
+<p>–</p>
+<p>###Select 【查找】</p>
+<ul>
+<li>常规查找</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person *P = [Person jr_findByID:<span class="string">@"111"</span>];</span><br><span class="line"><span class="built_in">NSArray</span> *list = [Person jr_findAll];</span><br><span class="line"><span class="built_in">NSArray</span> *list1 = [Person jr_findAllOrderBy:<span class="string">@"_age"</span> isDesc:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>条件查询</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *condis = @[</span><br><span class="line">                    [JRQueryCondition condition:<span class="string">@"_l_date &lt; ?"</span> args:@[[<span class="built_in">NSDate</span> date]] type:JRQueryConditionTypeAnd],</span><br><span class="line">                    [JRQueryCondition condition:<span class="string">@"_a_int &gt; ?"</span> args:@[@<span class="number">9</span>] type:JRQueryConditionTypeAnd],</span><br><span class="line">                    ];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">NSArray</span> *arr = [Person jr_findByConditions:condis</span><br><span class="line">                                   groupBy:<span class="string">@"_room"</span></span><br><span class="line">                                   orderBy:<span class="string">@"_age"</span></span><br><span class="line">                                     limit:<span class="string">@" limit 0,13 "</span></span><br><span class="line">                                    isDesc:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>SQL</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *sql = <span class="string">@"select * from Person where age = ?"</span>;</span><br><span class="line"><span class="built_in">NSArray</span> *list = [Person jr_executeSql:sql args:@[@<span class="number">10</span>]];</span><br></pre></td></tr></table></figure>
+<p>–</p>
+<p>#Other 【其他】</p>
+<p>###协议：JRPersistent</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">JRPersistent</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"><span class="keyword">@required</span></span><br><span class="line">- (<span class="keyword">void</span>)setID:(<span class="built_in">NSString</span> *)ID;</span><br><span class="line">- (<span class="built_in">NSString</span> *)ID;</span><br><span class="line"><span class="keyword">@optional</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  返回不用入库的对象字段数组</span><br><span class="line"> *  The full property names that you want to ignore for persistent</span><br><span class="line"> *  </span><br><span class="line"> *  @return array</span><br><span class="line"> */</span></span><br><span class="line">+ (<span class="built_in">NSArray</span> *)jr_excludePropertyNames;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>###默认NSObject分类实现</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">NSObject</span> (<span class="title">JRDB</span>) &lt;<span class="title">JRPersistent</span>&gt;</span></span><br><span class="line">(...methods)</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>–</p>
+<p>###JRDBMgr</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">JRDBMgr</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) FMDatabase *defaultDB;</span><br><span class="line">+ (instancetype)shareInstance;</span><br><span class="line">+ (FMDatabase *)defaultDB;</span><br><span class="line">- (FMDatabase *)createDBWithPath:(<span class="built_in">NSString</span> *)path;</span><br><span class="line">- (<span class="keyword">void</span>)deleteDBWithPath:(<span class="built_in">NSString</span> *)path;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  在这里注册的类，使用本框架的数据库将全部建有这些表</span><br><span class="line"> *  @param clazz 类名</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="keyword">void</span>)registerClazzForUpdateTable:(Class&lt;JRPersistent&gt;)clazz;</span><br><span class="line">- (<span class="built_in">NSArray</span>&lt;Class&gt; *)registedClazz;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 更新默认数据库的表（或者新建没有的表）</span><br><span class="line"> * 更新的表需要在本类先注册</span><br><span class="line"> */</span></span><br><span class="line">- (<span class="keyword">void</span>)updateDefaultDB;</span><br><span class="line">- (<span class="keyword">void</span>)updateDB:(FMDatabase *)db;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>JRDBMgr持有一个默认数据库（~/Documents/jrdb/jrdb.sqlite），任何不指定数据库的操作，都在此数据库进行操作。默认数据库可以自行设置。</p>
+<p>######Method</p>
+<pre><code>- (void)registerClazzForUpdateTable:(Class&lt;JRPersistent&gt;)clazz;
+</code></pre><p>在JRDBMgr中注册的类，可以使用</p>
+<pre><code>-(void)updateDB:(FMDatabase *)db
+</code></pre><p>进行统一更新或者创建表。    </p>
+<p>–</p>
+<p>#Table Operation 【表操作】</p>
+<p>###Create 【建表】<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// FMDatabase+JRDB 方法</span></span><br><span class="line">[[JRDBMgr defaultDB] createTable4Clazz:[Person class]];</span><br><span class="line">[Person jr_createTable];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除原有的表，重新创建</span></span><br><span class="line">[[JRDBMgr defaultDB] truncateTable4Clazz:[Person class]];</span><br><span class="line">[Person jr_truncateTable];</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存时，若发现没有表，将自动创建</span></span><br><span class="line">[person jr_save];</span><br></pre></td></tr></table></figure></p>
+<p>###Update 【更新表】</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[JRDBMgr defaultDB] updateTable4Clazz:[Person class]];</span><br><span class="line">[Person jr_updateTable];</span><br></pre></td></tr></table></figure>
+<p>更新表时，只会添加不存在的字段，不会修改字段属性，不会删除字段，若有需要，需要自行写sql语句进行修改</p>
+<p>###Drop 【删表】<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[JRDBMgr defaultDB] dropTable4Clazz:[Person class]];</span><br><span class="line">[Person jr_dropTable];</span><br></pre></td></tr></table></figure></p>
+<p>–</p>
+<p>#Thread Operation 【线程操作】</p>
+<ul>
+<li>多线程操作使用FMDB自带的 FMDatabaseQueue</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[person jr_saveWithComplete:^(<span class="built_in">BOOL</span> success) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%d"</span>, success);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>任何带complete block的操作，都将放入到FMDatabaseQueue进行顺序执行</p>
+<ul>
+<li>注：所有需要立刻返回结果，或者影响其他操作的数据库操作，都建议放在主线程进行更新，大批量更新以及多线程操作数据库时，请使用带complete block的操作。</li>
+</ul>
+<p>–</p>
+<p>#MoreUsage</p>
+<ul>
+<li>查看FMDatabase+JRDB.h</li>
+</ul>
+<p>–</p>
 
           
         
@@ -355,7 +439,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -402,7 +486,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
