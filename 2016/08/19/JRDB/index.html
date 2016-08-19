@@ -110,7 +110,7 @@ Description
 <meta property="og:image" content="http://img.shields.io/cocoapods/v/JRDB.svg?style=flat">
 <meta property="og:image" content="http://img.shields.io/cocoapods/p/JRDB.svg?style=flat">
 <meta property="og:image" content="http://img.shields.io/cocoapods/l/JRDB.svg?style=flat">
-<meta property="og:updated_time" content="2016-08-19T02:45:31.000Z">
+<meta property="og:updated_time" content="2016-08-19T08:14:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JRDB">
 <meta name="twitter:description" content="iOS用对FMDB封装一个对FMDB进行类Hibernate封装的ios库
@@ -135,7 +135,7 @@ Description
     motion: true,
     duoshuo: {
       userId: 0,
-      author: 'Author'
+      author: '博主'
     }
   };
 </script>
@@ -148,7 +148,7 @@ Description
   <title> JRDB | Jrwong's Blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -203,7 +203,7 @@ Description
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
           </a>
         </li>
       
@@ -213,17 +213,27 @@ Description
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+        <li class="menu-item menu-item-technology">
+          <a href="/categories/technology" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
-            Tags
+            技术
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/categories/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            杂碎
           </a>
         </li>
       
@@ -276,12 +286,31 @@ Description
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2016-08-19T10:44:25+08:00" content="2016-08-19">
               2016-08-19
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/technology/" itemprop="url" rel="index">
+                    <span itemprop="name">technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -572,8 +601,8 @@ Description
       
         
 <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/assets/icon/favicon.jpg" alt="Jrwong wechat" style="width: 200px; max-width: 100%;"/>
-    <div>ex. subscribe to my blog by scanning my public wechat account</div>
+    <img id="wechat_subscriber_qcode" src="/images/wechat/wechat.jpg" alt="Jrwong wechat" style="width: 200px; max-width: 100%;"/>
+    <div>微信</div>
 </div>
 
 
@@ -635,10 +664,10 @@ Description
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            站点概览
           </li>
         </ul>
       
@@ -646,19 +675,26 @@ Description
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/favicon.ico"
+               src="/images/head/head.jpg"
                alt="Jrwong" />
           <p class="site-author-name" itemprop="name">Jrwong</p>
-          <p class="site-description motion-element" itemprop="description">A blog to record myself</p>
+          <p class="site-description motion-element" itemprop="description">天道酬勤</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
           
 
           
@@ -669,26 +705,32 @@ Description
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/scubers" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:jrwong@qq.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+          
         </div>
 
         
         
 
         
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://github.com/scubers" title="GitHub" target="_blank">GitHub</a>
-                </li>
-              
-            </ul>
-          </div>
         
 
       </section>
@@ -727,11 +769,11 @@ Description
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
