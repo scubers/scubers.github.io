@@ -1,0 +1,689 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="技术，博客," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="搭建完毕–
+Hexo + Github搭建博客搭完了完了了。
+囧，网上太多现成的教程了，就不再写了，把别人的连接拿过来直接看吧
+
+MacHexo官网–
+准备使用Hexo需要使用Nodejs, 直接百度搜索安装Nodejs吧
+完了之后再terminal执行命令，安装Hexo
+npm install hexo-cli -g
+–    
+完了，开始写博客随便建立一个文件夹，cd进去，执行
+123hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo + Github 搭建博客 （本地篇）">
+<meta property="og:url" content="http://yoursite.com/2016/08/19/hexoBlog/index.html">
+<meta property="og:site_name" content="Jrwong's Blog">
+<meta property="og:description" content="搭建完毕–
+Hexo + Github搭建博客搭完了完了了。
+囧，网上太多现成的教程了，就不再写了，把别人的连接拿过来直接看吧
+
+MacHexo官网–
+准备使用Hexo需要使用Nodejs, 直接百度搜索安装Nodejs吧
+完了之后再terminal执行命令，安装Hexo
+npm install hexo-cli -g
+–    
+完了，开始写博客随便建立一个文件夹，cd进去，执行
+123hexo">
+<meta property="og:updated_time" content="2016-08-19T09:36:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo + Github 搭建博客 （本地篇）">
+<meta name="twitter:description" content="搭建完毕–
+Hexo + Github搭建博客搭完了完了了。
+囧，网上太多现成的教程了，就不再写了，把别人的连接拿过来直接看吧
+
+MacHexo官网–
+准备使用Hexo需要使用Nodejs, 直接百度搜索安装Nodejs吧
+完了之后再terminal执行命令，安装Hexo
+npm install hexo-cli -g
+–    
+完了，开始写博客随便建立一个文件夹，cd进去，执行
+123hexo">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/19/hexoBlog/"/>
+
+  <title> Hexo + Github 搭建博客 （本地篇） | Jrwong's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Jrwong's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-technology">
+          <a href="/categories/technology" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            技术
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/categories/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            杂碎
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo + Github 搭建博客 （本地篇）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-19T17:34:35+08:00" content="2016-08-19">
+              2016-08-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/technology/" itemprop="url" rel="index">
+                    <span itemprop="name">technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="搭建完毕"><a href="#搭建完毕" class="headerlink" title="搭建完毕"></a>搭建完毕</h1><p>–</p>
+<h3 id="Hexo-Github搭建博客"><a href="#Hexo-Github搭建博客" class="headerlink" title="Hexo + Github搭建博客"></a>Hexo + Github搭建博客</h3><h4 id="搭完了"><a href="#搭完了" class="headerlink" title="搭完了"></a>搭完了</h4><h5 id="完了"><a href="#完了" class="headerlink" title="完了"></a>完了</h5><h6 id="了"><a href="#了" class="headerlink" title="了"></a>了</h6><h6 id="。"><a href="#。" class="headerlink" title="。"></a>。</h6><blockquote>
+<p>囧，网上太多现成的教程了，就不再写了，把别人的连接拿过来直接看吧</p>
+</blockquote>
+<h1 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h1><h3 id="Hexo官网"><a href="#Hexo官网" class="headerlink" title="Hexo官网"></a><a href="https://hexo.io" target="_blank" rel="external">Hexo官网</a></h3><p>–</p>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>使用Hexo需要使用Nodejs, 直接百度搜索安装Nodejs吧</p>
+<p>完了之后再terminal执行命令，安装Hexo</p>
+<pre><code>npm install hexo-cli -g
+</code></pre><p>–    </p>
+<h4 id="完了，开始写博客"><a href="#完了，开始写博客" class="headerlink" title="完了，开始写博客"></a>完了，开始写博客</h4><p>随便建立一个文件夹，cd进去，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo init   // 初始化一个hexo项目</div><div class="line">npm install	// 把本项目安装到 npm</div><div class="line">hexo server	// 启动hexo服务器</div></pre></td></tr></table></figure>
+<p>接下来只要在浏览器打开terminal上的命令行即可，一般默认<a href="localhost:4000" target="_blank" rel="external">localhost:4000</a></p>
+<p>–</p>
+<h4 id="Hexo-目录结构"><a href="#Hexo-目录结构" class="headerlink" title="Hexo 目录结构"></a>Hexo 目录结构</h4><ul>
+<li>node_modules // 别管</li>
+<li>packag.json // 别管</li>
+<li>scaffolds // 别管</li>
+<li>source // 创建的文章都放在这里</li>
+<li>themes // 网站主题文件夹<ul>
+<li>上网下载的主题文件夹，都放在这个文件夹下。</li>
+</ul>
+</li>
+<li><p>_config.yml // 网站的主要配置文件</p>
+<ul>
+<li>theme: 就是你自己下载的主题文件夹在这里配置</li>
+<li>没什么好配的，进去看到title改改就好了，囧，其他之后你都懂的了</li>
+</ul>
+</li>
+<li><p>public // 这个文件夹一开始不会出现，只会在执行 hexo deploy命令后出现，产生的这个文件夹，是静态网页文件，直接放上网站或者github上，就完成网站的部署</p>
+</li>
+</ul>
+<p>–</p>
+<h4 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h4><p>新增一个文章，在你的hexo项目目录下执行</p>
+<pre><code>hexo new [title name]
+</code></pre><p>就会在 source/_posts  目录下创建一个md文件，就可以在这里写文章。<br>创建的文件都有个格式，格式不能删除，格式是发布网站时的各种信息依据<br>格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 你的文章title</div><div class="line">date: 2016-08-19 10:44:25 # 发布日期</div><div class="line">categories: 文章所在分类 # 即使没有配置，也可以写上，之后的hexo会生成对应的路径 </div><div class="line">tags: [iOS, 数据库] # 文章的标签，即使没有配置，也可以写上，之后的hexo会生成对应的路径 </div><div class="line"></div><div class="line">---</div></pre></td></tr></table></figure>
+<p>文章再这个格式后开始写即可</p>
+<p>– </p>
+<h4 id="本地发布"><a href="#本地发布" class="headerlink" title="本地发布"></a>本地发布</h4><p>要发布到网站，就需要生成静态的html网页，其实在本地，即使不转换成静态网页，hexo也会帮我们即时渲染，但是由于缓存的原因，我们不一定能马上看到效果，所以还是发布一下比较实在。<br>写完文章之后，在hexo目录下执行</p>
+<pre><code>hexo clean        // 清楚缓存
+hexo generate        // 生成静态页面
+hexo deploy        // 如果有配置github的话，可以直接发布到远程
+</code></pre><p>在generate之后，我们就可以在目录结构下，看到多了一个public文件夹，里面就是发布网站所需要的文件。</p>
+<p>之前写md时的开头格式中的 categories 和 tags 都会在这里生成对应的文件夹。需要访问对应的页面时，只需要根据文件夹层次，输入路径即可。</p>
+<h1 id="No-Windows"><a href="#No-Windows" class="headerlink" title="No Windows"></a>No Windows</h1>
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat/wechat.jpg" alt="Jrwong wechat" style="width: 200px; max-width: 100%;"/>
+    <div>微信</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术，博客/" rel="tag">#技术，博客</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/19/iOS用对FMDB的封装/" rel="next" title="iOS用对FMDB封装">
+                <i class="fa fa-chevron-left"></i> iOS用对FMDB封装
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head/head.jpg"
+               alt="Jrwong" />
+          <p class="site-author-name" itemprop="name">Jrwong</p>
+          <p class="site-description motion-element" itemprop="description">天道酬勤</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/scubers" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:jrwong@qq.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建完毕"><span class="nav-number">1.</span> <span class="nav-text">搭建完毕</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-Github搭建博客"><span class="nav-number">1.0.1.</span> <span class="nav-text">Hexo + Github搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#搭完了"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">搭完了</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#完了"><span class="nav-number">1.0.1.1.1.</span> <span class="nav-text">完了</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#了"><span class="nav-number">1.0.1.1.1.1.</span> <span class="nav-text">了</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#。"><span class="nav-number">1.0.1.1.1.2.</span> <span class="nav-text">。</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac"><span class="nav-number">2.</span> <span class="nav-text">Mac</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo官网"><span class="nav-number">2.0.1.</span> <span class="nav-text">Hexo官网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完了，开始写博客"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">完了，开始写博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo-目录结构"><span class="nav-number">2.0.1.3.</span> <span class="nav-text">Hexo 目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写博客"><span class="nav-number">2.0.1.4.</span> <span class="nav-text">写博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地发布"><span class="nav-number">2.0.1.5.</span> <span class="nav-text">本地发布</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#No-Windows"><span class="nav-number">3.</span> <span class="nav-text">No Windows</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jrwong</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
