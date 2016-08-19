@@ -311,19 +311,15 @@
       
         
           
-            <h1 id="搭建完毕"><a href="#搭建完毕" class="headerlink" title="搭建完毕"></a>搭建完毕</h1><p>–</p>
-<h3 id="Hexo-Github搭建博客"><a href="#Hexo-Github搭建博客" class="headerlink" title="Hexo + Github搭建博客"></a>Hexo + Github搭建博客</h3><h4 id="搭完了"><a href="#搭完了" class="headerlink" title="搭完了"></a>搭完了</h4><h5 id="完了"><a href="#完了" class="headerlink" title="完了"></a>完了</h5><h6 id="了"><a href="#了" class="headerlink" title="了"></a>了</h6><h6 id="。"><a href="#。" class="headerlink" title="。"></a>。</h6><blockquote>
+            <h1 id="搭建完毕"><a href="#搭建完毕" class="headerlink" title="搭建完毕"></a>搭建完毕</h1><h3 id="Hexo-Github搭建博客"><a href="#Hexo-Github搭建博客" class="headerlink" title="Hexo + Github搭建博客"></a>Hexo + Github搭建博客</h3><h4 id="搭完了"><a href="#搭完了" class="headerlink" title="搭完了"></a>搭完了</h4><h5 id="完了"><a href="#完了" class="headerlink" title="完了"></a>完了</h5><h6 id="了"><a href="#了" class="headerlink" title="了"></a>了</h6><h6 id="。"><a href="#。" class="headerlink" title="。"></a>。</h6><blockquote>
 <p>囧，网上太多现成的教程了，就不再写了，把别人的连接拿过来直接看吧</p>
 </blockquote>
-<h1 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h1><h3 id="Hexo官网"><a href="#Hexo官网" class="headerlink" title="Hexo官网"></a><a href="https://hexo.io" target="_blank" rel="external">Hexo官网</a></h3><p>–</p>
-<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>使用Hexo需要使用Nodejs, 直接百度搜索安装Nodejs吧</p>
+<h1 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h1><h3 id="Hexo官网"><a href="#Hexo官网" class="headerlink" title="Hexo官网"></a><a href="https://hexo.io" target="_blank" rel="external">Hexo官网</a></h3><h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p>使用Hexo需要使用Nodejs, 直接百度搜索安装Nodejs吧</p>
 <p>完了之后再terminal执行命令，安装Hexo</p>
 <pre><code>npm install hexo-cli -g
-</code></pre><p>–    </p>
-<h4 id="完了，开始写博客"><a href="#完了，开始写博客" class="headerlink" title="完了，开始写博客"></a>完了，开始写博客</h4><p>随便建立一个文件夹，cd进去，执行</p>
+</code></pre><h4 id="完了，开始写博客"><a href="#完了，开始写博客" class="headerlink" title="完了，开始写博客"></a>完了，开始写博客</h4><p>随便建立一个文件夹，cd进去，执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo init   // 初始化一个hexo项目</div><div class="line">npm install	// 把本项目安装到 npm</div><div class="line">hexo server	// 启动hexo服务器</div></pre></td></tr></table></figure>
 <p>接下来只要在浏览器打开terminal上的命令行即可，一般默认<a href="localhost:4000" target="_blank" rel="external">localhost:4000</a></p>
-<p>–</p>
 <h4 id="Hexo-目录结构"><a href="#Hexo-目录结构" class="headerlink" title="Hexo 目录结构"></a>Hexo 目录结构</h4><ul>
 <li>node_modules // 别管</li>
 <li>packag.json // 别管</li>
@@ -342,13 +338,11 @@
 <li><p>public // 这个文件夹一开始不会出现，只会在执行 hexo deploy命令后出现，产生的这个文件夹，是静态网页文件，直接放上网站或者github上，就完成网站的部署</p>
 </li>
 </ul>
-<p>–</p>
 <h4 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h4><p>新增一个文章，在你的hexo项目目录下执行</p>
 <pre><code>hexo new [title name]
 </code></pre><p>就会在 source/_posts  目录下创建一个md文件，就可以在这里写文章。<br>创建的文件都有个格式，格式不能删除，格式是发布网站时的各种信息依据<br>格式为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: 你的文章title</div><div class="line">date: 2016-08-19 10:44:25 # 发布日期</div><div class="line">categories: 文章所在分类 # 即使没有配置，也可以写上，之后的hexo会生成对应的路径 </div><div class="line">tags: [iOS, 数据库] # 文章的标签，即使没有配置，也可以写上，之后的hexo会生成对应的路径 </div><div class="line"></div><div class="line">---</div></pre></td></tr></table></figure>
 <p>文章再这个格式后开始写即可</p>
-<p>– </p>
 <h4 id="本地发布"><a href="#本地发布" class="headerlink" title="本地发布"></a>本地发布</h4><p>要发布到网站，就需要生成静态的html网页，其实在本地，即使不转换成静态网页，hexo也会帮我们即时渲染，但是由于缓存的原因，我们不一定能马上看到效果，所以还是发布一下比较实在。<br>写完文章之后，在hexo目录下执行</p>
 <pre><code>hexo clean        // 清楚缓存
 hexo generate        // 生成静态页面
