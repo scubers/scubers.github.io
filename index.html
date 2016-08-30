@@ -248,6 +248,142 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/30/iosautopackage/" itemprop="url">
+                  搭建 iOS in House 发布服务器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T11:29:48+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/technology/" itemprop="url" rel="index">
+                    <span itemprop="name">technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h1><ul>
+<li>iOS在网上下载安装ipa必须实https连接</li>
+<li>java的keytool生成的证书iOS识别不了，需要使用openssl命令生成</li>
+</ul>
+<h1 id="搭建服务器"><a href="#搭建服务器" class="headerlink" title="搭建服务器"></a>搭建服务器</h1><p>这里使用最常见的tomcat</p>
+<h2 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h2><p>1、创建一个目录，进入cmd命令行下，通过cd命令进入该目录</p>
+<p>2、在指定的目录下运行命令：<code>openssl genrsa -out server.key 1024</code>生成服务器密钥文件。</p>
+<p>如果目录下生产server.key的文件，并且文件大小不为0，则说明成功。</p>
+<p>如果没成功，查看输出的内容中是否有提示“\usr\local\ssl\openssl.cnf”找不到的问题，如果遇到这个问题，说明你并没有按照第四步的要求将openssl设置到path中，解决的办法有2个，第一个完成第四步openssl的path设定，第二个是将openssl的bin目录下的文件“openssl.cfg”修改个名字，然后在c盘下创建“\usr\local\ssl\”目录，将文件复制进去。</p>
+<p>3、再运行命令：<code>openssl req -new -out server.csr -key server.key</code>根据密钥文件生成签署文件。</p>
+<p>其中各个设置项中，除了Common Name其它的各项都可以为空，不过为了后期你好辨别证书，最好不要设置空，其中Common Name的值必须是你的服务器ip或者是域名，本机测试的话可以用localhost，但是如果要通过移动设备来访问就不能设置成localhost。</p>
+<p>4、再运行命令：<code>openssl genrsa  -out ca.key 1024</code>生成客户端密钥文件。</p>
+<p>5、再运行命令: <code>openssl req  -new -x509 -days 365 -key ca.key -out ca.crt</code>生成客户端的签署文件。</p>
+<pre><code>填写的内容和第三步一致即可，其中organizationName必须和第三步的一致
+</code></pre><p>6、在当前目录下创建demoCA文件夹，并在demoCA下创建文件index.txt和serial，serial内容为01，index.txt为空，以及文件夹newcerts</p>
+<p>7、在命令行中输入：<code>openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key</code>让客户端的签署证书能够被网站服务器的签署证书认识</p>
+<p>8、运行命令<code>openssl pkcs12 -export -in server.crt -inkey server.key -out server.p12</code>把服务端签署证书转换浏览器可以识别的PCS12格式,密码使用上面输入的密码“123456”。</p>
+<p>9、运行命令<code>java -cp jetty-5.1.10.jar org.mortbay.util.PKCS12Import server.p12  server.jks</code>，使用jetty中的PKCS12Import工具类完成转换,密码同上.(jetty-5.1.10.jar需要放置到当前文件夹中)</p>
+<p>如果出现错误：说明你的jetty-5.1.10.jar没有复制到命令行的当前文件夹下。</p>
+<p>10、如果你好奇，可以通过命令行<code>keytool -v -list -keystore server.jks</code>  查看下文件的签署内容。</p>
+<p> 以上过程总共生成7个文件，我们只关心其中的3个文件，分别是server.p12（tomcat配置用）、server.jks（tomcat配置用）、ca.crt(客户端证书，需要iOS设备下载安装)。</p>
+<h2 id="配置Tomcat"><a href="#配置Tomcat" class="headerlink" title="配置Tomcat"></a>配置Tomcat</h2><p> 1、打开Tomcat的目录，找到conf下的server.xml文件，打开找到被注释的8443端口部分，修改成如下内容</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8443"</span></span></div><div class="line"> <span class="attr">protocol</span>=<span class="string">"org.apache.coyote.http11.Http11Protocol"</span> </div><div class="line"> <span class="attr">SSLEnabled</span>=<span class="string">"true"</span></div><div class="line"> <span class="attr">maxThreads</span>=<span class="string">"150"</span>      </div><div class="line"> <span class="attr">scheme</span>=<span class="string">"https"</span> </div><div class="line"> <span class="attr">secure</span>=<span class="string">"true"</span>  </div><div class="line"> <span class="attr">clientAuth</span>=<span class="string">"false"</span>  </div><div class="line"> <span class="attr">keystoreFile</span>=<span class="string">"D:/apache-tomcat-6.0.35/webapps/ROOT/ca/server.p12"</span></div><div class="line"> <span class="attr">keystorePass</span>=<span class="string">"123456"</span>      </div><div class="line"> <span class="attr">keystoreType</span>=<span class="string">"PKCS12"</span></div><div class="line"> <span class="attr">truststoreFile</span>=<span class="string">"D:/apache-tomcat-6.0.35/webapps/ROOT/ca/server.jks"</span></div><div class="line"> <span class="attr">truststorePass</span>=<span class="string">"123456"</span>      </div><div class="line"> <span class="attr">truststoreType</span>=<span class="string">"JKS"</span>/&gt;</div><div class="line"> </div><div class="line"><span class="comment">&lt;!--如果服务器报错 alias xxxx 就加上一个属性--&gt;</span></div><div class="line"><span class="comment">&lt;!--keyAlias="1"--&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>iOS下载ipa，是通过下载一个plist，然后解析plist文件进行下载安装ipa的，所以我们网站的连接应该指向我们生成的plist文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN\" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>items<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">array</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">key</span>&gt;</span>assets<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">array</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">key</span>&gt;</span>kind<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">string</span>&gt;</span>software-package<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">key</span>&gt;</span>url<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">string</span>&gt;</span>$&#123;dowloadBaseUrl&#125;/$&#123;appName&#125;.ipa<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">array</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>metadata<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">key</span>&gt;</span>bundle-identifier<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">string</span>&gt;</span>$&#123;bundleId&#125;<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">key</span>&gt;</span>bundle-version<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">string</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">key</span>&gt;</span>kind<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">string</span>&gt;</span>software<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">key</span>&gt;</span>releaseNotes<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">string</span>&gt;</span>1.1版本发布<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">key</span>&gt;</span>title<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">string</span>&gt;</span>$&#123;targetname&#125;<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span>"</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/22/Shell/" itemprop="url">
                   Shell 基础教程
                 </a>
@@ -901,7 +1037,7 @@ hexo deploy        // 如果有配置github的话，可以直接发布到远程
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -918,7 +1054,7 @@ hexo deploy        // 如果有配置github的话，可以直接发布到远程
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
