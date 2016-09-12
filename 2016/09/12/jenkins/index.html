@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Technology," />
+  <meta name="keywords" content="technology," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="链接">
+<meta name="description" content="下载Jenkins是一个代码持续继承工具，也是一个服务器。官方的DMG格式安装文件会创建一个jenkins用户，并且跟cocoapods有点不兼容（权限之类的问题）所以这里我选择的直接下载官方的war包。（war包下载）使用jenkins需要安装java（JDK下载，下载JDK后直接安装即可）
+启动直接启动war包下载好war包和安装好JDK之后，到war包目录下，执行命令
+java -jar j">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shell 基础教程">
-<meta property="og:url" content="http://yoursite.com/2016/08/22/Shell/index.html">
+<meta property="og:title" content="搭建jenkins，代码项目持续继承">
+<meta property="og:url" content="http://yoursite.com/2016/09/12/jenkins/index.html">
 <meta property="og:site_name" content="Jrwong's Blog">
-<meta property="og:description" content="链接">
-<meta property="og:updated_time" content="2016-08-22T01:47:15.000Z">
+<meta property="og:description" content="下载Jenkins是一个代码持续继承工具，也是一个服务器。官方的DMG格式安装文件会创建一个jenkins用户，并且跟cocoapods有点不兼容（权限之类的问题）所以这里我选择的直接下载官方的war包。（war包下载）使用jenkins需要安装java（JDK下载，下载JDK后直接安装即可）
+启动直接启动war包下载好war包和安装好JDK之后，到war包目录下，执行命令
+java -jar j">
+<meta property="og:updated_time" content="2016-09-12T07:34:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shell 基础教程">
-<meta name="twitter:description" content="链接">
+<meta name="twitter:title" content="搭建jenkins，代码项目持续继承">
+<meta name="twitter:description" content="下载Jenkins是一个代码持续继承工具，也是一个服务器。官方的DMG格式安装文件会创建一个jenkins用户，并且跟cocoapods有点不兼容（权限之类的问题）所以这里我选择的直接下载官方的war包。（war包下载）使用jenkins需要安装java（JDK下载，下载JDK后直接安装即可）
+启动直接启动war包下载好war包和安装好JDK之后，到war包目录下，执行命令
+java -jar j">
 
 
 
@@ -114,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/22/Shell/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/12/jenkins/"/>
 
-  <title> Shell 基础教程 | Jrwong's Blog </title>
+  <title> 搭建jenkins，代码项目持续继承 | Jrwong's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -246,7 +252,7 @@
             
             
               
-                Shell 基础教程
+                搭建jenkins，代码项目持续继承
               
             
           </h1>
@@ -258,8 +264,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-22T09:46:05+08:00" content="2016-08-22">
-              2016-08-22
+            <time itemprop="dateCreated" datetime="2016-09-12T14:55:33+08:00" content="2016-09-12">
+              2016-09-12
             </time>
           </span>
 
@@ -305,7 +311,39 @@
       
 
       
-        <p><a href="http://www.runoob.com/linux/linux-shell-basic-operators.html" target="_blank" rel="external">链接</a></p>
+        <h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>Jenkins是一个代码持续继承工具，也是一个服务器。<br><br>官方的DMG格式安装文件会创建一个jenkins用户，并且跟cocoapods有点不兼容（权限之类的问题）所以这里我选择的直接下载官方的war包。（<a href="http://updates.jenkins-ci.org/download/war/" target="_blank" rel="external">war包下载</a>）<br><br>使用jenkins需要安装java（<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">JDK下载，下载JDK后直接安装即可</a>）</p>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><h2 id="直接启动war包"><a href="#直接启动war包" class="headerlink" title="直接启动war包"></a>直接启动war包</h2><p>下载好war包和安装好JDK之后，到war包目录下，执行命令</p>
+<pre><code>java -jar jenkins.war
+
+java -jar jenkins.war --httpPort=8800 // 指定端口
+</code></pre><p>执行后，jenkins将启动，域名localhost，默认8080端口。直接访问即可</p>
+<h2 id="使用Tomcat"><a href="#使用Tomcat" class="headerlink" title="使用Tomcat"></a>使用Tomcat</h2><p>可以把war包放入tomcat的webapp目录下，并启动tomcat，tomcat会自动解压war包并启动jenkins。</p>
+<h2 id="Jenkins-Home"><a href="#Jenkins-Home" class="headerlink" title="Jenkins Home"></a>Jenkins Home</h2><p>第一次启动后，jenkins会在 /Users/${your_folder}/.jenkins 下建立自己的主配置文件夹，本用户的jenkins都实用这里的配置。</p>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p>进入系统后，进入系统设置-》管理插件</p>
+<p>直接搜索安装</p>
+<ul>
+<li>Keychains and Provisioning Profiles Management (管理keychain和- provisioning文件插件）<br></li>
+<li>搜索下载xcode相关插件<br></li>
+<li>根据需要搜索安装svn 或者 git相关插件</li>
+</ul>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>点击新建，输入项目名，选择<strong>构建一个自由风格的软件项目</strong></p>
+<p>配置好相关的svn 配置。</p>
+<h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><p>相关描述的配置</p>
+<h2 id="源码管理"><a href="#源码管理" class="headerlink" title="源码管理"></a>源码管理</h2><p>相关源码管理的配置，根据自身实际需要，配置相关的svn或者git信息</p>
+<h2 id="构建触发器"><a href="#构建触发器" class="headerlink" title="构建触发器"></a>构建触发器</h2><p>配置相关的构建时间与时机，可以配置定时任务，或者远程控制构建</p>
+<h2 id="构建环境"><a href="#构建环境" class="headerlink" title="构建环境"></a>构建环境</h2><p>根据项目需要，添加必要的构建环境。<br><br>iOS情况下，安装keychain and Pro….插件后，可以勾选相关的配置</p>
+<h2 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h2><p>点击添加构建步骤，可以添加自己的shell进行构建，也可以使用jenkins的xcode插件进行构建。</p>
+<p><strong>注意：jenkins的Xcode插件在macOS10.10 之后不支持打包ipa包，只支持xcodebuild</strong></p>
+<p>所以最后的导出ipa包需要自己写shell进行打包</p>
+<p>构建步骤可以随意添加，根据需要添加自己的shell脚本进行继承工作。</p>
+<h3 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h3><p>犹豫本人用到使用cocoapods进行管理项目，并且cocoapods的相关代码不会上传到svn，所以每次检出代码都需要pod install 或者updata一次。此时如果是第一次安装pod的话，xcworkspace下不会有我们需要的项目target，需要打开一次cocoapods生成的workspace才能自动生成。<br><br>在没有我们需要的target的情况下进行脚本编译的话，xcodebuild会报错。后再找到一个ruby插件，可以帮我们完成这个需要打开workspace的动作。</p>
+<pre><code>gem install xcodeproj
+</code></pre><p>然后写ruby脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env ruby</div><div class="line">require &apos;xcodeproj&apos;</div><div class="line"></div><div class="line">puts ARGV.at(0)</div><div class="line"></div><div class="line">def recreateSchemes(projpath)</div><div class="line">	xcproj = Xcodeproj::Project.open(projpath)</div><div class="line">	xcproj.recreate_user_schemes</div><div class="line">	xcproj.save	</div><div class="line">end</div><div class="line"></div><div class="line">recreateSchemes(ARGV.at(0))</div></pre></td></tr></table></figure>
+<p>使用shell执行Ruby脚本</p>
+<pre><code>ruby /xx/xx/ruby.ruby ${xcodeprojPath}
+</code></pre><p>这样之后，workspace下就会生成我们需要的target，进而编译成功</p>
+<h2 id="构建后操作"><a href="#构建后操作" class="headerlink" title="构建后操作"></a>构建后操作</h2><p>可以使用shell以及jenkins 自带的邮件，ftp插件等功能进行通知测试或者发布版本</p>
 
       
     </div>
@@ -333,7 +371,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Technology/" rel="tag">#Technology</a>
+            <a href="/tags/technology/" rel="tag">#technology</a>
           
         </div>
       
@@ -342,17 +380,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/19/hexoBlog/" rel="next" title="Hexo + Github 搭建博客 （本地篇）">
-                <i class="fa fa-chevron-left"></i> Hexo + Github 搭建博客 （本地篇）
+              <a href="/2016/08/30/iosautopackage/" rel="next" title="搭建 iOS in House 发布服务器">
+                <i class="fa fa-chevron-left"></i> 搭建 iOS in House 发布服务器
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/30/iosautopackage/" rel="prev" title="搭建 iOS in House 发布服务器">
-                搭建 iOS in House 发布服务器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,7 +520,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动"><span class="nav-number">2.</span> <span class="nav-text">启动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接启动war包"><span class="nav-number">2.1.</span> <span class="nav-text">直接启动war包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Tomcat"><span class="nav-number">2.2.</span> <span class="nav-text">使用Tomcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jenkins-Home"><span class="nav-number">2.3.</span> <span class="nav-text">Jenkins Home</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件"><span class="nav-number">3.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">4.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#General"><span class="nav-number">4.1.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码管理"><span class="nav-number">4.2.</span> <span class="nav-text">源码管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建触发器"><span class="nav-number">4.3.</span> <span class="nav-text">构建触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建环境"><span class="nav-number">4.4.</span> <span class="nav-text">构建环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建"><span class="nav-number">4.5.</span> <span class="nav-text">构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插曲"><span class="nav-number">4.5.1.</span> <span class="nav-text">插曲</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建后操作"><span class="nav-number">4.6.</span> <span class="nav-text">构建后操作</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
