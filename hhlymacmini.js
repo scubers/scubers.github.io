@@ -836,7 +836,7 @@ var domains = {
     "gimpshop.com": 1,
     "girlbanker.com": 1,
     "git-scm.com": 1,
-    "github.com": 1,
+//     "github.com": 1,
     "givemesomethingtoread.com": 1,
     "glennhilton.com": 1,
     "globaljihad.net": 1,
